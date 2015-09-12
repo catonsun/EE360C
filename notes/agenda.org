@@ -1,0 +1,45 @@
+* Course Schedule
+** Review of Discrete Mathematics
+   SCHEDULED: <2015-09-01>
+** Review of Proof Techniques
+   SCHEDULED: <2015-09-03>
+** Stable Marriage
+   SCHEDULED: <2015-09-08>
+** Algorithm Analysis
+   SCHEDULED: <2015-09-10>
+** Algorithm Analysis
+   SCHEDULED: <2015-09-15>
+** Priority Queues
+   SCHEDULED: <2015-09-17>
+** Graphs
+   SCHEDULED: <2015-09-22>
+** Graphs
+   SCHEDULED: <2015-09-24>
+** Greedy Algorithms
+   SCHEDULED: <2015-09-29>
+** Greedy Algorithms
+   SCHEDULED: <2015-10-08>
+** Greedy Algorithms
+   SCHEDULED: <2015-10-13>
+** Divide and Conquer
+   SCHEDULED: <2015-10-15>
+** Divide and Conquer
+   SCHEDULED: <2015-10-20>
+** Divide and Conquer
+   SCHEDULED: <2015-10-22>
+** Dynamic Programming
+   SCHEDULED: <2015-10-27>
+** Dynamic Programming
+   SCHEDULED: <2015-10-29>
+** Dynamic Programming
+   SCHEDULED: <2015-11-03>
+** Network Flow
+   SCHEDULED: <2015-11-05>
+** Network Flow
+   SCHEDULED: <2015-11-17>
+** NP Complete
+   SCHEDULED: <2015-11-19>
+** NP Complete
+   SCHEDULED: <2015-11-24>
+** Approximation Algorithms
+   SCHEDULED: <2015-12-01>
