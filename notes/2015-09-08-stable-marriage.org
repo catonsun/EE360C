@@ -1,0 +1,105 @@
+* Stable Matching Problem
+** Problem Description
+Given a set of preferences among employers and applicants, can we
+assign applicants to employers so that for every employer =E=, and every
+applicant =A= who is not scheduled to work for =E=, at least one of the
+following two things is the case?
++ =E= prefers every one of its accepted applicants to =A=; or
++ =A= prefers her current situation over working for =E=.
+** Assumptions
+In order to simplify the problem, we make the following assumptions:
++ Each of =n= applicants applies to each of =n= companies
++ Each company can accept a /single/ applicant
+The creators of this problem observed that this special case can be
+viewed as a system with =n= men and =w= women attempting to find
+same-sex marriage partners.
+** Model
+Consider a /M = {m_1, \cdots , m_n}/ of =n= men, and a set /W = {w_1,
+\cdots, w_n}/ of =n= women. Let /M \times W/ denote the set of all possible
+ordered pairs of the form /(m, w)/ where /m \in M/ and /w \in W/. A
+/matching S/ is a /set/ of ordered pairs, each from /M \times W/, with
+the property that each member of /M/ and each member of /W/ appears in
+at most one pair in /S/. A /perfect matching S\prime/ is a matching with
+the property that each member of /M/ and each member of /W/ appears in
+/exactly/ one pair of /S\prime/.
+
+A pair /(m, w\prime)/ is an /instability/ with respect to /S/ if /(m,
+w\prime)/ does not belong to /S/, but each of /m/ and /w\prime/
+prefers the other to their real partners.
+** Goal
+We are attempting to find a set of marriages with no instabilities. A
+matching /S/ is /stable/ if (i) it is perfect, and (ii) there is no
+instability with respect to /S/.
+** Gale-Shapley Algorithm (G-S)
+#+NAME: Gale-Shapley algorithm
+#+BEGIN_SRC
+Initially all M and W free
+While there is a man m who is free and hasn't proposed to every woman
+  Choose such a man m
+  Let w be the highest-ranked woman for m to whom m has not yet proposed
+  If w is free then
+    (m, w) become engaged
+  Else w is currently engaged to m'
+    If w prefers m' to m then
+      m remains free
+    Else w prefers m to m'
+      (m, w) become engaged
+      m' becomes free
+    Endif
+  Endif
+Endwhile
+Return the set S of engaged pairs
+#+END_SRC
+** Algorithm Analysis
+1. /w/ remains engaged from the point at which she receives her first
+   proposal; and the sequence of partners to which she is engaged gets
+   better.
+
+2. The sequence of women to whom /m/ proposes gets worse.
+
+3. The G-S algorithm terminates after at most n^2 iterations of the
+   While loop.
+   
+   *Proof of Upper-bound*
+
+   We let denote /P(t)/ the set of pairs /(m, w)/ such that /m/ has
+   proposed to /w/ by the end of iteration /t/. We see that for all /t/,
+   the size of /P(t+1)/ is strictly greater than the size of /P(t)/. The
+   value of /P(\cdot)/ can increase at most n^2 times (once for each
+   possible pair of men and women.
+4. If /m/ is free at some point in the execution of the algorithm,
+   then there is a woman to whom he has not yet proposed.
+
+   *Proof by Contradiction*
+
+   Suppose /m/ is free, but has proposed to all women. Each of the /n/
+   women must be engaged. Since each engaged woman has a corresponding
+   man, all /n/ men must be engaged. This forms a contradiction.
+5. The set /S/ returned at termination is a perfect matching.
+
+   *Proof by Contradiction*
+
+   The set of engaged pairs always forms a matching. We must only show
+   that all /m/ and /w/ are present within the set. Assume a free man
+   /m/ has proposed to every woman, hence, terminating the
+   algorithm. This directly contradicts (1.4), which says there cannot
+   be a free man who has proposed to every woman.
+
+6. The set /S/ is a stable matching.
+
+   *Proof*
+
+   Assume there is an instability with respect to /S/. Such an
+   instability requires two pairs /(m, w)/ and /(m\prime, w\prime)/ in
+   S such that:
+   + m prefers w\prime to w
+   + w\prime prefers m to m\prime
+   /m's/ last proposal is, by definition, included in /S/. There are
+   two possible scenarios that resulted in this pair /(m, w)/.
+
+   a. /m/ proposed to /w\prime/ earlier. If so, /m/ was rejected by
+   /w\prime/ because she prefers another man /m\Prime/. Either
+   /m\prime = m\Prime/ or /w\prime/ prefers /m\prime/ to /m\Prime/.
+
+   b. /m/ has not proposed to /w/. If so, /w/ must occur higher on
+   /m's/ preferences.
