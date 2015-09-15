@@ -103,3 +103,23 @@ Return the set S of engaged pairs
 
    b. /m/ has not proposed to /w/. If so, /w/ must occur higher on
    /m's/ preferences.
+
+   It follows that S is a stable matching.
+
+7. Every execution of the G-S algorithm results in the set /S/.
+
+   *Proof by Contradiction*
+   Left as an exercise to the reader.
+
+8. In the stable matching /S*/, each woman is paired with her worst
+   valid partner.
+
+   *Proof by Contradiction*
+   Left as an exercise to the reader.
+
+* Five Representative Problems
+Consider a scheduling problem with requests that take the form: /Can I
+reserve the resource starting at time s, until time f?/ A resource may
+be used by at most one person. The goal is to maximize the number of
+requests accepted.
+** Weighted Interval Scheduling
