@@ -117,11 +117,7 @@
    a. $(A \cap B) \supset (A \cap B \cap C)$
 
       \begin{equation}
-      \begin{split}
-      A = B = C &= \{1\}       \\
-      A \cap B &= \{1\}        \\
-      A \cap B \cap C &= \{1\}
-      \end{split}
+      A = B = C = \{1\}
       \end{equation}
 
       {1} is not a superset of {1}.
@@ -129,11 +125,7 @@
    b. $C \subseteq (A \cup B) \rightarrow (A \cap B) \subseteq C$
 
       \begin{equation}
-      \begin{split}
-      A &= \{1, 2\} \\
-      B &= \{2\}    \\
-      C &= \{1\}
-      \end{split}
+      A = \{1, 2\}, B = \{2\}, C = \{1\}
       \end{equation}
 
       C is a subset of {1, 2}, however, {2} is not a subset of C.
@@ -141,11 +133,7 @@
    c. $(A \cap B) \subseteq C \rightarrow C \subseteq (A \cup B)$
 
       \begin{equation}
-      \begin{split}
-      A = \{1\}    \\
-      B = \{1, 2\} \\
-      C = \{1, 4\}
-      \end{split}
+      A = \{1\}, B = \{1, 2\}, C = \{1, 4\}
       \end{equation}
 
       {1} is a subset of C, however, C is not a subset of {1, 2}.
@@ -187,20 +175,20 @@
 
 5. *Inductive Proof*
 
-   a. Given a binary tree with /n = 1/ degree 2 nodes, the tree has
-      /(n + 1) = 2/ leaves.
+   a. Binary tree with /n = 1/ degree 2 nodes and /n+1 = 2/
+      leaves.
 
       By definition, a single degree 2 node contains 2 leaves.
 
-   b. Assuming a binary tree with /n/ degree 2 nodes has /(n + 1)/
-      leaves, then a tree with /(n + 1)/ degree 2 nodes has /(n + 2)/
+   b. Assuming a binary tree with /n/ degree 2 nodes has /n+1/
+      leaves, then a tree with /n+1/ degree 2 nodes has /n+2/
       leaves.
 
       In order to add a node to our binary tree of size /n/, we must
       add a child two one of the leaves. This decrements the leaf
       count to /n/. However, our new child node have degree two, so we
       add two leaves to our child node. This increases the leaf count
-      by 2, resulting in /(n + 2)/ leaves.
+      by 2, resulting in /n+2/ leaves.
 
 6. *Stable Marriage*
 
@@ -208,3 +196,15 @@
    matching containing a pair /(m, w)/ such that /m/ is ranked first
    on the preference list of /w/ and /w/ is ranked first on the
    preference list of /m/.
+
+   Imagine a population with the following preferences:
+
+   + /m_1/ prefers /w_1/
+   + /m_2/ prefers /w_2/
+   + /w_1/ prefers /m_2/
+   + /w_2/ prefers /m_1/
+
+   The four valid pairs are: /(m_1, w_1), (m_1, w_2), (m_2, w_1),
+   (m_2, w_2)/. As there are no possible pairs, the problem
+   description is false.
+
