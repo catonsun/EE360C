@@ -108,9 +108,7 @@
       For a given /b \in Z/, we can construct an /a/ such that /f(a) =
       b/ by simply setting /a = 2 * b/. As such, /a/ will always be
       even and therefore result in the first branch of the piecewise
-      function as /a/ will be even. The single exception is at /b = 0/.
-      For this case, we can construct /a = 1/, resulting in the
-      second branch of the piecewise function as /a/ will be odd.
+      function.
 
 3. *Sets and Counterexamples*
 
@@ -141,32 +139,33 @@
 4. *Proof by Contradiction*
 
    Assume the graph /G/ is disconnected and has at least two
-   components. We can choose two vertices (/u/, /v/) from two separate
-   components. These vertices should share no common neighbors. We
-   must show that the union of their neighbor sets has size greater
-   than 0.
+   components. We can choose two nodes (/u/, /v/) from two separate
+   components. These nodes should share no common neighbors. We
+   define the function /N(v)/ to be the set of neighbors of
+   node v. No common neighbors is represented as, $\vert N(u) \cap
+   N(v) \vert = 0$.
 
    By the Inclusion-Exclusion principle
 
    \begin{equation}
-   \vert N(u) \cup N(v) \vert = \vert N(u) \vert + \vert N(v) \vert - \vert N(u) \cap N(v) \vert
+   \vert N(u) \cap N(v) \vert = \vert N(u) \vert + \vert N(v) \vert - \vert N(u) \cup N(v) \vert
    \end{equation}
 
    \begin{equation}
-   \vert N(u) \cup N(v) \vert = \frac{n}{2} + \frac{n}{2} - \vert N(u) \cap N(v) \vert
+   \vert N(u) \cap N(v) \vert = \frac{n}{2} + \frac{n}{2} - \vert N(u) \cup N(v) \vert
    \end{equation}
 
    The intersection of both sets of neighbors cannot include $\{u,v\}$
    since these two vertices are in separate components.
 
    \begin{equation}
-   \vert N(u) \cap N(v) \vert \leq n - 2
+   \vert N(u) \cup N(v) \vert \leq n - 2
    \end{equation}
 
    By substitution into (0.17), we arrive at the following:
 
    \begin{equation}
-   \vert N(u) \cup N(v) \vert \geq 2
+   \vert N(u) \cap N(v) \vert \geq 2
    \end{equation}
 
    This contradicts the requirement that /u/ and /v/ should share no
