@@ -1,0 +1,163 @@
+#+OPTIONS: toc:nil
+#+AUTHOR: Anthony Weems
+#+TITLE: Homework 1
+
+\numberwithin{equation}{section}
+1. *Relations*
+   a. To show a relation to be an equivalence relation, we must show it
+      to be reflexive, symmetric, and transitive.
+      
+      *Reflexive*
+      
+      Given an element /x \in A/, we must evaluate the pair
+      /(x, x)/. The sum of digits in /x/ equal the sum of digits in /y/,
+      since /x = y/.
+      
+      *Symmetric*
+      
+      Given elements /(x, y) \in A/, we must prove the implication:
+      
+      \begin{equation}
+      x \sim y \rightarrow y \sim x
+      \end{equation}
+      
+      For brevity, we define /d(x)/ to be a function returning the
+      digits of /x/. We apply the relation to the LHS of the
+      implication.
+
+      \begin{equation}
+      \sum{d(x)} = \sum{d(y)}
+      \end{equation}
+      
+      Trivially, we can flip the equation to match the RHS.
+      \begin{equation}
+      \sum{d(y)} = \sum{d(x)}
+      \end{equation}
+      
+      *Transitive*
+      
+      Given elements /x,y,z \in A/, we must prove the implication:
+      
+      \begin{equation}
+      (x \sim y) \land (y \sim z) \rightarrow (x \sim z)
+      \end{equation}
+
+      We expand the LHS of the implication as follows:
+
+      \begin{equation}
+      \sum{d(x)} = \sum{d(y)} = \sum{d(z)}
+      \end{equation}
+
+      Trivially, we can see the following
+
+      \begin{equation}
+      \sum{d(x)} = \sum{d(z)}
+      \end{equation}
+
+   b. The equivalence classes of A under R:
+
+      \begin{equation}
+      \begin{split}
+      [10]_R &= \{10\} \\
+      [24]_R &= \{24\} \\
+      [11]_R &= [20]_R = \{11, 20\} \\
+      [12]_R &= [21]_R = \{12, 21\} \\
+      [13]_R &= [22]_R = \{13, 22\} \\
+      [14]_R &= [23]_R = \{14, 23\} \\
+      \end{split}
+      \end{equation}
+
+2. *Functions*
+
+   \begin{equation}
+   f(n) =
+     \begin{cases} 
+         \frac{n}{2} & \text{ if $n$ is even} \\
+         n-1         & \text{ if $n$ is odd} \\
+     \end{cases}
+   \end{equation}
+
+   a. For a given /a, b \in Z/, we examine the implication:
+
+      \begin{equation}
+      (f(a) = f(b)) \rightarrow (a = b)
+      \end{equation}
+
+      Assume /f(a) = f(b)/, one of three cases is true. Either /a/ and
+      /b/ are both even, /a/ and /b/ are both odd, or /a/ is even
+      and /b/ is odd. We will show a contradiction in the final case.
+
+      \begin{equation}
+      \frac{a}{2} = b - 1
+      \end{equation}
+
+      Multiply both sides by 2.
+
+      \begin{equation}
+      a = 2 * b - 1
+      \end{equation}
+
+      The above contradictions (0.9), therefore /f(x)/ is /not injective/.
+
+   b. To prove /f/ is surjective, we must show:
+
+      \begin{equation}
+      (\forall b \in Z)(\exists a \in Z) [f(a) = b]
+      \end{equation}
+
+      For a given /b \in Z/, we can construct an /a/ such that /f(a) =
+      b/ by simply setting /a = 2 * b/. As such, /a/ will always be
+      even and therefore result in the first branch of the piecewise
+      function as /a/ will be even. The single exception is at /b = 0/.
+      For this case, we can construct /a = 1/, resulting in the
+      second branch of the piecewise function as /a/ will be odd.
+
+3. *Sets and Counterexamples*
+
+   a. $(A \cap B) \supset (A \cap B \cap C)$
+
+      \begin{equation}
+      \begin{split}
+      A = B = C &= \{1\}       \\
+      A \cap B &= \{1\}        \\
+      A \cap B \cap C &= \{1\}
+      \end{split}
+      \end{equation}
+
+      {1} is not a superset of {1}.
+
+   b. $C \subseteq (A \cup B) \rightarrow (A \cap B) \subseteq C$
+
+      \begin{equation}
+      \begin{split}
+      A &= \{1, 2\} \\
+      B &= \{2\}    \\
+      C &= \{1\}
+      \end{split}
+      \end{equation}
+
+      C is a subset of {1, 2}, however, {2} is not a subset of C.
+
+   c. $(A \cap B) \subseteq C \rightarrow C \subseteq (A \cup B)$
+
+      \begin{equation}
+      \begin{split}
+      A = \{1\}    \\
+      B = \{1, 2\} \\
+      C = \{1, 4\}
+      \end{split}
+      \end{equation}
+
+      {1} is a subset of C, however, C is not a subset of {1, 2}.
+
+4. *Proof by Contradiction*
+
+   This is my proof, see it soar.
+
+5. *Inductive Proof*
+
+   This is my proof, see it soar.
+
+6. *Stable Marriage*
+
+   Wheeeee.
