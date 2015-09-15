@@ -152,12 +152,59 @@
 
 4. *Proof by Contradiction*
 
-   This is my proof, see it soar.
+   Assume the graph /G/ is disconnected and has at least two
+   components. We can choose two vertices (/u/, /v/) from two separate
+   components. These vertices should share no common neighbors. We
+   must show that the union of their neighbor sets has size greater
+   than 0.
+
+   By the Inclusion-Exclusion principle
+
+   \begin{equation}
+   \vert N(u) \cup N(v) \vert = \vert N(u) \vert + \vert N(v) \vert - \vert N(u) \cap N(v) \vert
+   \end{equation}
+
+   \begin{equation}
+   \vert N(u) \cup N(v) \vert = \frac{n}{2} + \frac{n}{2} - \vert N(u) \cap N(v) \vert
+   \end{equation}
+
+   The intersection of both sets of neighbors cannot include $\{u,v\}$
+   since these two vertices are in separate components.
+
+   \begin{equation}
+   \vert N(u) \cap N(v) \vert \leq n - 2
+   \end{equation}
+
+   By substitution into (0.17), we arrive at the following:
+
+   \begin{equation}
+   \vert N(u) \cup N(v) \vert \geq 2
+   \end{equation}
+
+   This contradicts the requirement that /u/ and /v/ should share no
+   common neighbors, therefore, a graph in which all nodes have degree
+   $\frac{n}{2}$ is a connected graph.
 
 5. *Inductive Proof*
 
-   This is my proof, see it soar.
+   a. Given a binary tree with /n = 1/ degree 2 nodes, the tree has
+      /(n + 1) = 2/ leaves.
+
+      By definition, a single degree 2 node contains 2 leaves.
+
+   b. Assuming a binary tree with /n/ degree 2 nodes has /(n + 1)/
+      leaves, then a tree with /(n + 1)/ degree 2 nodes has /(n + 2)/
+      leaves.
+
+      In order to add a node to our binary tree of size /n/, we must
+      add a child two one of the leaves. This decrements the leaf
+      count to /n/. However, our new child node have degree two, so we
+      add two leaves to our child node. This increases the leaf count
+      by 2, resulting in /(n + 2)/ leaves.
 
 6. *Stable Marriage*
 
-   Wheeeee.
+   In every instance of the Stable Marriage problem, there is a stable
+   matching containing a pair /(m, w)/ such that /m/ is ranked first
+   on the preference list of /w/ and /w/ is ranked first on the
+   preference list of /m/.
