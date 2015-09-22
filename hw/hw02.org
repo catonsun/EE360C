@@ -5,7 +5,7 @@
 \numberwithin{equation}{section}
 1. *Truthfulness in Stable Marriage*
 
-   A preference list exists such that a woman can lie and acheive a
+   A preference list exists such that a woman can lie and achieve a
    better outcome. Such a list is as follows:
 
    | *m_1*: | (w_a, w_b, w_c) |  | *w_a*: | (m_2, m_1, m_3) |
@@ -35,20 +35,20 @@
 
    b. $n = \sqrt[6]{\gamma} = 391$
 
-   c. $n = \sqrt{\gamma / 5555} = 10801$
+   c. $n = \sqrt{\gamma / 5555} = 805024$
 
-   d. $n = 60855$
+   d. $n^3 * log_2{n} \rightarrow n = 60955$ (assuming log base two)
 
    e. $n = \log_2{\gamma} = 51$
 
 3. *Efficiency*
 
-   a. A_1
+   a. Yes, No, No, A_1
 
-   b. A_2
+   b. No, Yes, No, A_2
 
-   c. A_1
+   c. Yes, No, No, A_1
 
-   d. A_2
+   d. Yes, Yes, Yes, A_2
 
-   e. A_1
+   e. Yes, No, No, A_1
