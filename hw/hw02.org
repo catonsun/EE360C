@@ -18,7 +18,7 @@
    \{ (m_1, w_a), (m_2, w_b), (m_3, w_3) \}
    \end{equation}
    
-   However, w_a can claim (m_2, m_3, m_1), resulting in the set: 
+   However, $w_a$ can claim $(m_2, m_3, m_1)$, resulting in the set:
    
    \begin{equation}
    \{ (m_1, w_b), (m_2, w_a), (m_3, w_c) \}
