@@ -8,9 +8,9 @@
    A preference list exists such that a woman can lie and acheive a
    better outcome. Such a list is as follows:
 
-   | m_1: | (w_a, w_b, w_c) |  | w_a: | (m_2, m_1, m_3) |
-   | m_2: | (w_b, w_a, w_c) |  | w_b: | (m_1, m_2, m_3) |
-   | m_3: | (w_a, w_b, w_c) |  | w_c: | (m_1, m_2, m_3) |
+   | *m_1*: | (w_a, w_b, w_c) |  | *w_a*: | (m_2, m_1, m_3) |
+   | *m_2*: | (w_b, w_a, w_c) |  | *w_b*: | (m_1, m_2, m_3) |
+   | *m_3*: | (w_a, w_b, w_c) |  | *w_c*: | (m_1, m_2, m_3) |
    
    Normally, this would result in the set:
    
