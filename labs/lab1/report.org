@@ -1,0 +1,89 @@
+#+OPTIONS: toc:nil
+#+TITLE: Lab 1 Report
+#+AUTHOR: Anthony Weems
+
+* Proof of perfect matching
+
+We will reduce this modified stable matching problem to stable
+matching by creating a function to produce a mapping between the two.
+
+Firstly, we must deal with the issue of landlords. Each landlord owns
+some unique set of apartments and holds n preferences. For each
+landlord, we can apply their n preferences to each of their
+apartments, leaving us with n apartments, each with n preferences.
+
+Next, we simple map the tenants to men and the apartments to women. We
+define "marriage" as the concept of renting an apartment. The current
+problem now matches the stable marriage problem (apart from ties).
+
+To resolve ties, we apply a simple function to each set of
+preferences. If there are any ties within a set of preferences, we
+simply choose a random order among the ties and set that as the new
+preference list. This allows us to transform the partial order
+specified in the original problem to the total order required by the
+stable marriage problem.
+
+Now that we have reduced our problem to stable marriage, it is trivial
+to show that there always exists a perfect matcing that is weakly
+stable. The stable marriage problem has a known proof of the same
+concept that we will apply to our problem.
+
+* Pseudocode
+
+We present a two phase algorithm to solve the proposed problem. Phase
+1 converts the current problem to a stable marriage problem. Phase 2
+simply applies the Gale-Shapley algorithm to the set of tenants and
+apartments, whose preference lists are described above to match the
+original stable marriage problem.
+
+#+NAME: pseudocode
+#+BEGIN_SRC
+function solve()
+  // phase 1:
+  for t in tenants:
+    convert preferences from partial order to total order
+  for a in apartments:
+    convert preferences from partial order to total order
+
+  // phase 2:
+  execute conventional GS-algorithm on tenants and apartments
+#+END_SRC
+
+* Proof of correctness
+
+As shown above, our problem may be reduced to the stable marriage
+problem. As such, it is trivial to show correctness (i.e. the
+Gale-Shapley algorithm has an existing proof of correctness).
+
+* Runtime complexity of proposed algorithm
+
+To calculate the runtime complexity of our algorithm, we will examine
+both phases of the pseudocode. Phase 1 must examine all n tenants and
+sort their preference list to create a total order. This can be
+achieve in $O(n \log{n})$. Phase 2 has known complexity of
+$O(n^2)$. The runtime of Phase 2 will dominate and the overal
+complexity of $O(n^2)$. In practice, however, our algorithm will
+rarely perform $n^2$ operations as the average matching does not
+contain many backreferences. The experimental data shown in Figure 1
+shows an almost linear increase in time as $n$ increases.
+
+* Runtime complexity of brute force
+
+In the worst case, the brute force solution will examine ALL possible
+matchings and test to see if each is a stable matching. There are n!
+possible matchings and checking for a stable matching can require
+examining all pairs of tenant and apartment. Therefore, the runtime
+complexity of the brute force method is $O(n^2 * n!)$.
+
+* Experimental analysis
+
+The graph below shows the runtime of Gale-Shapley (blue) and brute
+force (red) against random stable marriage problems of arbitrary n.
+
+[[./fig/graph.png]]
+
+Additionally, we show the Gale-Shapley graph alone with a linear
+y-axis. This demonstrates the near linear nature of the algorithm in
+practice.
+
+[[./fig/gs_graph.png]]
