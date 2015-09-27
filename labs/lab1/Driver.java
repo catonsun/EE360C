@@ -11,7 +11,11 @@ public class Driver {
         parseArgs(args);
         
         Matching problem = parseMatchingProblem(filename);
+        long start = System.nanoTime();
         testRun(problem);
+        long end = System.nanoTime();
+
+        System.err.println(end - start);
     }
 
     private static void usage() {
