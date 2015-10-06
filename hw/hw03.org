@@ -1,0 +1,87 @@
+#+OPTIONS: toc:nil
+#+AUTHOR: Anthony Weems
+#+TITLE: Homework 3
+
+\numberwithin{equation}{section}
+1. *Algorithm Analysis*
+
+   a. $f(n) = n^3$. Asymptotically, the algorithm has three loops
+      which iterate through n elements.
+
+   b. We can save time by summing A as we go:
+
+      #+NAME: 
+      #+BEGIN_SRC 
+      for i from 1 to n
+         sum = A[i]
+         for j from i+1 to n
+            sum += A[j]
+            B[i,j] = sum
+      #+END_SRC
+
+   c. The runtime of my proposed algorithm is n^2 because the
+      inefficient summation step is removed.
+
+2. *Decision Trees*
+
+   a. Places balls $(b_1, b_2, b_3)$ one side and $(b_4, b_5, b_6)$ on
+      the other. If they are equal, proceed to the next step using
+      group $(b_7, b_8, b_9)$. If they are different, proceed to the
+      next step with the heavier set. Step two is essentially the
+      same, however, each set is size one instead of three. Place one
+      ball on each side, leaving one ball off the scale. If the scale
+      is balanced, the off ball is heaviest. If the scale is
+      imbalanced, the heavier side is heaviest.
+
+   b. There are three possible outcomes of each scale use, left-heavy,
+      right-heavy, and equal. As such, our decision tree is a ternary
+      tree where a single ball must be selected as the maximum. The
+      height of a such a tree is $\log_3{n}$. Therefore, when $n = 9$,
+      the lower bound is 2.
+
+3. *Heap*
+
+   A min-heap is a complete binary tree in which the data contained in
+   a node is less than or equal to its children.
+
+   #+NAME: 
+   #+BEGIN_SRC 
+   def alg(root, k):
+      s = []
+      if root.value > k:
+         return s
+      s.add(root.value)
+      s.add(alg(root.right, k))
+      s.add(alg(root.left, k))
+      return s
+   #+END_SRC
+
+    Runtime is O(n) as worst-case, we will look at each element once.
+
+4. *Graphs*
+
+   Duplicate question.
+
+5. *Graphs*
+
+   A connected, undirected graph is vertex biconnected if there is no
+   vertex whose removal disconnects the graph. A connected, undirected
+   graph is edge biconnected if there is no edge whose removal
+   disconnects the graph.
+
+   a. vertex biconnected graph is edge biconnected
+      \vspace{3cm}
+   b. edge biconnected graph is vertex biconnected
+      \vspace{3cm}
+
+6. *Graphs*
+
+   Proof by contradiction. Assume G does not equal T. This implies
+   that G contains at least one more edge than T. Adding the
+   appropriate edges to T to produce G will inevitably result in a
+   cycle. Let v_1 be a vertex on the cycle (composed of v_1, v_2, ...,
+   v_n). During DFS, suppose v_i is first visited node. v_i, v_(i+1),
+   etc. will be in the same path in the tree. However, in BFS, there
+   will be a branch at some point during the algorithm and the tree
+   produced will differ from the DFS tree. This presents a
+   contradiction, therefore G = T.
