@@ -69,10 +69,10 @@
    graph is edge biconnected if there is no edge whose removal
    disconnects the graph.
 
-   a. vertex biconnected graph is edge biconnected
-      \vspace{3cm}
-   b. edge biconnected graph is vertex biconnected
-      \vspace{3cm}
+   a. Two nodes with an edge in between. Remove edge.
+
+   b. Two connected groups of two nodes where each node is connected
+      to a fifth node. Remove the fifth node.
 
 6. *Graphs*
 
