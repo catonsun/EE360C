@@ -25,7 +25,6 @@ public class Program2 extends VertexNetwork {
        DO NOT FORGET to modify the constructors when you 
        add new fields to the Program2 class. */
     public static final double INF = Double.MAX_VALUE;
-    public static final int FAILURE = -1;
 
     private HashMap<Vertex, HashMap<Vertex, Edge>> edgeup;
 
@@ -38,8 +37,10 @@ public class Program2 extends VertexNetwork {
         for (Edge e : edges) {
             Vertex u = location.get(e.getU());
             Vertex v = location.get(e.getV());
-            edgeup.get(u).put(v, e);
-            edgeup.get(v).put(u, e);
+            if (u.distance(v) <= transmissionRange) {
+                edgeup.get(u).put(v, e);
+                edgeup.get(v).put(u, e);
+            }
         }
     }
 
@@ -63,31 +64,31 @@ public class Program2 extends VertexNetwork {
         setup();
     }
 
+    public void setTransmissionRange(double transmissionRange) {
+        this.transmissionRange = transmissionRange;
+        setup();
+    }
+
     private double vDistance(int src, int dst) {
         Vertex vSrc = location.get(src);
         Vertex vDst = location.get(dst);
-        return vSrc.distance(vDst);
+        double dist = vSrc.distance(vDst);
+        if (dist <= transmissionRange) {
+            return dist;
+        } else {
+            return INF;
+        }
     }
 
-    private int findClosest(int src, int sink) {
-        int found = FAILURE;
-        double dist = vDistance(src, sink);
+    private Vertex findClosest(Vertex src, Vertex sink) {
+        Vertex found = null;
+        double dist = src.distance(sink);
 
-        for (Edge e : edges) {
-            int tsrc;
-            if (e.getU() == src) {
-                tsrc = e.getV();
-            } else if (e.getV() == src) {
-                tsrc = e.getU();
-            } else {
-                /* not a matching edge */
-                continue;
-            }
-
-            double test = vDistance(tsrc, sink);
+        for (Vertex v : edgeup.get(src).keySet()) {
+            double test = sink.distance(v);
             if (test < dist) {
                 dist = test;
-                found = tsrc;
+                found = v;
             }
         }
         return found;
@@ -108,15 +109,16 @@ public class Program2 extends VertexNetwork {
            path is returned if the GPSR algorithm fails to find a path. */
         ArrayList<Vertex> path = new ArrayList<Vertex>();
 
-        int cur = sourceIndex;
-        path.add(location.get(cur));
+        Vertex sink = location.get(sinkIndex);
+        Vertex cur = location.get(sourceIndex);
+        path.add(cur);
 
-        while (cur != sinkIndex) {
-            cur = findClosest(cur, sinkIndex);
-            if (cur == FAILURE) {
+        while (!cur.equals(sink)) {
+            cur = findClosest(cur, sink);
+            if (cur == null) {
                 return new ArrayList<Vertex>(0);
             } else {
-                path.add(location.get(cur));
+                path.add(cur);
             }
         }
         return path;
@@ -151,7 +153,7 @@ public class Program2 extends VertexNetwork {
                 }
             }
 
-            if (dist.get(u) == INF) break;
+            if (min == INF) break;
             Q.remove(u);
             if (u.equals(sink)) break;
 
@@ -173,6 +175,9 @@ public class Program2 extends VertexNetwork {
         while (!u.equals(source)) {
             path.add(u);
             u = prev.get(u);
+            if (u == null) {
+                return new ArrayList<Vertex>(0);
+            }
         }
         return path;
     }
