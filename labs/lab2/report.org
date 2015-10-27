@@ -1,0 +1,41 @@
+#+OPTIONS: toc:nil
+#+TITLE: Lab 2 Report
+#+AUTHOR: Anthony Weems
+
+* Proofs
+** GPSR is non-optimal
+blah
+
+** Dijkstra Min-Hops is better, but non-optimal
+blah
+
+* Efficiency Analysis
+** Memory Efficiency of Graph
+The data structure used for this lab consists of a map of vertices
+to a map of verticies to edges. In essence, each vertex holds a map
+with keys for each neighbor within the transmission range. The space
+complexity of this representation is $O(V * E)$.
+
+** Runtime Complexity of Graph
+Creating the data structure is rather fast as it only requires
+examining each edge in the graph. The runtime complexity of creation
+is $O(E)$.
+
+** Runtime Complexity of Dijkstra
+The data structure used within Dijkstra's algorithm allows $O(1)$
+lookup of neighbors by allowing us to search for an edge between to
+vertices. Therefore, the overall runtime complexity of Dijkstra's
+algorithm is $O(V^2)$. Worst-case, the algorithm will examine the
+metric between every pair of nodes because we do not use a priority
+queue in our algorithm.
+
+* Runtime Efficiency
+
+The graph below displays the runtime of our three algorithms:
+
+GPSR (blue), Dijkstra Min-Latency (green), and Dijkstra Min-Hops (red).
+
+[[./fig/graph.png]]
+
+The success rate of all algorithms was 100% for all tested
+transmission ranges in the large input testcase.
