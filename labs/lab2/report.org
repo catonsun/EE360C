@@ -4,10 +4,23 @@
 
 * Proofs
 ** GPSR is non-optimal
-blah
+We will show that GPSR is non-optimal by counter example. Assume that
+we have found a path using GPSR. Such a path must have a first node,
+that was closest to the sink. It is possible to construct a graph such
+that the first node leads the GPSR algorithm along a sub-optimal path
+because of the initial decision to follow the closest node.
 
 ** Dijkstra Min-Hops is better, but non-optimal
-blah
+Using Dijkstra's algorithm without regard for weight between nodes
+will provide a result similar to GPSR, but completely disregard all
+latency requirements. It is simple to construct a graph containing an
+obvious shortest path (in terms of hops), but terribly in-efficient
+with regard to latency. We can construct such a graph by initially
+setting all weights to 1, running Dijkstra's algorithm (min-hop), and
+then modifying the weights of all nodes in the path to have an
+extremely high latency. Such a graph will return the same path with
+a min-hop metric, but return a much more efficient path using a
+min-latency metric.
 
 * Efficiency Analysis
 ** Memory Efficiency of Graph
