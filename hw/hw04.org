@@ -18,7 +18,7 @@
       sum $n$. Removing $c_1$ from the solution is equivalent to the
       solution for $n-c_1$. If this new subset of coins is not an
       optimal solution to the $n-c_1$ problem, there exists a solution
-      with fewer coins, say j. If this imaginary solution did exist,
+      with fewer coins, say $j$. If this imaginary solution did exist,
       we could add $c_1$ back in and have a better solution to
       $n$. This represents a contradiction, as we began with an
       optimal solution to $n$. This shows optimal substructure of the
@@ -35,9 +35,9 @@
       property, therefore, the greedy coin algorithm must produce an
       optimal solution.
 
-   b. (1, 7, 15) making change for 21
-      + Greedy: 15,1,1,1,1,1,1
-      + Optimal: 7,7,7
+   b. Counter-example: (1, 4, 9) coins making change for 12 cents
+      + Greedy: 9,1,1,1
+      + Optimal: 4,4,4
 
 2. *Another Interval Problem*
 
@@ -106,7 +106,7 @@
 
 5. *Shortest Path*
 
-   The path between a pair of verices in a minimum spanning tree is
+   The path between a pair of vertices in a minimum spanning tree is
    not the shortest path between the two vertices in the full graph.
 
    Imagine a graph with edges $\{(A,B),(B,C),(C,D),(D,A)\}$ and
