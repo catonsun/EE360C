@@ -5,9 +5,9 @@
 \numberwithin{equation}{section}
 1. *Master Method*
 
-   a. $1 < \log_2{5}$ \implies $T(n) \in \Theta(n^2.3)$
+   a. $1 < \log_2{5}$ \implies $T(n) \in \Theta(n^{2.3})$
 
-   b. $2 < \log_2{5}$ \implies $T(n) \in \Theta(n^2.3)$
+   b. $2 < \log_2{5}$ \implies $T(n) \in \Theta(n^{2.3})$
 
    c. $3 > \log_2{5}$ \implies $T(n) = \Theta(n^3)$
 
@@ -79,7 +79,7 @@
 
 4. *Recurrences*
 
-   The recurrence relation for the function foo is
+   The recurrence relation for the function ~foo()~ is
    
    \begin{equation}
    T(n) = n + T(n/2) + T(n/2) + n/2
