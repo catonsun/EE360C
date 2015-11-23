@@ -1,5 +1,10 @@
 import java.util.HashMap;
 
+/*
+ * Anthony Weems
+ * amw3647
+ */
+
 public class Program3 implements IProgram3 {
 
     private int numClasses;
@@ -37,16 +42,6 @@ public class Program3 implements IProgram3 {
             return cache.get(totalHours);
         }
 
-        /*
-        System.out.println("Grade()");
-        for (int j = 0; j < numClasses; j++) {
-            for (int H = 0; H <= totalHours; H++) {
-                System.out.print(gf.grade(j, H) + "\t");
-            }
-            System.out.println();
-        }
-        */
-
         for (int j = 1; j <= numClasses; j++) {
             for (int H = 0; H <= totalHours; H++) {
                 int maxG = 0;
@@ -68,24 +63,6 @@ public class Program3 implements IProgram3 {
             }
         }
 
-        /*
-        System.out.println("G["+totalHours+"]["+numClasses+"]");
-        for (int j = 1; j <= numClasses; j++) {
-            for (int H = 0; H <= totalHours; H++) {
-                System.out.print(G[H][j] + "\t");
-            }
-            System.out.println();
-        }
-
-        System.out.println("M["+totalHours+"]["+numClasses+"]");
-        for (int j = 1; j <= numClasses; j++) {
-            for (int H = 0; H <= totalHours; H++) {
-                System.out.print(M[H][j] + "\t");
-            }
-            System.out.println();
-        }
-        */
-
         int H = totalHours;
         int j = numClasses;
 
@@ -97,7 +74,6 @@ public class Program3 implements IProgram3 {
         }
 
         do {
-            // System.out.println("Solving: " + H + " " + j + " (" + M[H][j] + ")");
             computeHours[j-1] = M[H][j];
             H = H - M[H][j];
             j--;
